@@ -6,10 +6,16 @@ api=Api(app)
 
 class HelloWorld(Resource):
     def get(self, name, test):
-        return {'name':'name',
-                'test':'test'}
+        return {
+         "name": name,
+         "test": test  
+         #json object
+        }
 
-api.add_resource(HelloWorld, "/helloworld/<str:name>/<int:test>")
 
-if "__name__" == "__main__":
-    app.run(debug=True)
+api.add_resource(HelloWorld, '/helloworld/<string:name>/<int:test>')
+
+if __name__ == "__main__":
+      app.run(debug=True,  port=5000)
+
+
