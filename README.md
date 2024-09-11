@@ -1,6 +1,7 @@
 # Restapi
-FLASK_API
+FLASK_APP:
 
+Running the website that count the values and update using CRUD.
 
 Flask is a micro web framework written in Python. It is classified as a microframework because it does not require particular tools or libraries.
 
