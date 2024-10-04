@@ -4,8 +4,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Resource, Api, reqparse, fields, marshal_with, abort
 
 app = Flask(__name__) 
+
+
+#created at SQLite database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app) 
+#defined api from flask restful api
 api = Api(app)
 
 class UserModel(db.Model): 
@@ -20,6 +24,8 @@ user_args = reqparse.RequestParser()
 user_args.add_argument('name', type=str, required=True, help="Name cannot be blank")
 user_args.add_argument('email', type=str, required=True, help="Email cannot be blank")
 
+
+#decorated with marshal with serializing data with using data
 userFields = {
     'id':fields.Integer,
     'name':fields.String,
@@ -31,49 +37,45 @@ class Users(Resource):
     @marshal_with(userFields)
     def get(self):
         users = UserModel.query.all() 
+        #empty array as output
         return users 
     
     @marshal_with(userFields)
     def post(self):
+        #define name with used argumnet wih
         args = user_args.parse_args()
         user = UserModel(name=args["name"], email=args["email"])
         db.session.add(user) 
         db.session.commit()
         users = UserModel.query.all()
         return users, 201
-    
+
 class User(Resource):
+    #get the data with id parameter 
     @marshal_with(userFields)
     def get(self, id):
-        user = UserModel.query.filter_by(id=id).first() 
-        if not user: 
+        user = UserModel.query.filter_by(id=id).first()
+        if not user:
+            #aborted if no user is found
             abort(404, message="User not found")
-        return user 
+        return user
     
     @marshal_with(userFields)
     def patch(self, id):
         args = user_args.parse_args()
-        user = UserModel.query.filter_by(id=id).first() 
-        if not user: 
-            abort(404, message="User not found")
-        user.name = args["name"]
-        user.email = args["email"]
+        user = UserModel.query.filter_by(id=id).first()
+        if not user:
+            abort(404, message="user not found")
+        user.name =args["name"]
+        user.email= args["email"]
         db.session.commit()
-        return user 
-    
-    @marshal_with(userFields)
-    def delete(self, id):
-        user = UserModel.query.filter_by(id=id).first() 
-        if not user: 
-            abort(404, message="User not found")
-        db.session.delete(user)
-        db.session.commit()
-        users = UserModel.query.all()
-        return users
+        return user
 
-    
+
 api.add_resource(Users, '/api/users/')
-api.add_resource(User, '/api/users/<int:id>')
+
+#add paramerater
+api.add_resource(User, '/api/users/<in: id>')
 
 @app.route('/')
 def home():
