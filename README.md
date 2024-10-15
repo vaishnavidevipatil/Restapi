@@ -4,8 +4,7 @@ FLASK_API
 
 orm - object relation mapper used to talk to the database of sql alchemy
 
-Rest api :=
-Restful_api pakage updated  api installation 
+Rest api := Restful_api pakage updated  api installation 
 
 In Python, the marshal module is used for serializing and deserializing Python objects, but it's generally not recommended for general-purpose serialization due to its limitations and security concerns.
 
@@ -21,3 +20,6 @@ Inserting new records
 Updating existing records
 Deleting records
 Querying the database
+
+Reparse- In Flask, particularly when using the Flask-RESTful extension, RequestParser is a utility that helps to parse and validate incoming request data. It simplifies the process of handling input data from different sources such as query parameters, form data, and JSON payloads.
+

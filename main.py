@@ -20,6 +20,9 @@ class UserModel(db.Model):
     def __repr__(self): 
         return f"User(name = {self.name}, email = {self.email})"
 
+
+# Define expected parameters and Create a RequestParser instance
+
 user_args = reqparse.RequestParser()
 user_args.add_argument('name', type=str, required=True, help="Name cannot be blank")
 user_args.add_argument('email', type=str, required=True, help="Email cannot be blank")
@@ -35,6 +38,7 @@ userFields = {
 class Users(Resource):
     #shape the data with http  request using post and get function
     @marshal_with(userFields)
+    #Requesting data from a specified resource
     def get(self):
         users = UserModel.query.all() 
         #empty array as output
@@ -61,7 +65,9 @@ class User(Resource):
         return user
     
     @marshal_with(userFields)
+    # the retrieval, validation, updating, and response formatting in a systematic way.
     def patch(self, id):
+        # Parse the incoming arguments
         args = user_args.parse_args()
         user = UserModel.query.filter_by(id=id).first()
         if not user:
@@ -71,11 +77,12 @@ class User(Resource):
         db.session.commit()
         return user
 
-
+# Add a resource for all users
 api.add_resource(Users, '/api/users/')
 
-#add paramerater
-api.add_resource(User, '/api/users/<in: id>')
+#add paramerater, Add a resource for a single user, with an ID parameter
+api.add_resource(User, '/api/user/<int:id>')
+
 
 @app.route('/')
 def home():
