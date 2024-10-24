@@ -5,7 +5,6 @@ from flask_restful import Resource, Api, reqparse, fields, marshal_with, abort
 
 app = Flask(__name__) 
 
-
 #created at SQLite database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app) 
@@ -40,6 +39,7 @@ class Users(Resource):
     @marshal_with(userFields)
     #Requesting data from a specified resource
     def get(self):
+        #retrive data in database
         users = UserModel.query.all() 
         #empty array as output
         return users 
@@ -76,13 +76,22 @@ class User(Resource):
         user.email= args["email"]
         db.session.commit()
         return user
+    
+    @marshal_with(userFields)
+    def delete(self, id):
+        user= UserModel.query.filter_by(id=id).first()
+        if not user:
+            abort(404, "User not found")
+            db.session.delete(user)
+            db.session.commit()
+            users=UserModel.query.all()
+            return users
 
 # Add a resource for all users
 api.add_resource(Users, '/api/users/')
 
 #add paramerater, Add a resource for a single user, with an ID parameter
 api.add_resource(User, '/api/user/<int:id>')
-
 
 @app.route('/')
 def home():

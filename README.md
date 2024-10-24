@@ -1,6 +1,6 @@
-# Restapi
-FLASK_API
-
+https://www.youtube.com/watch?v=z3YMz-Gocmw&t=1683s # Restapi
+FLASK_API- Flask is a micro web framework written in Python. 
+It is classified as a microframework because it does not require particular tools or libraries
 
 orm - object relation mapper used to talk to the database of sql alchemy
 
