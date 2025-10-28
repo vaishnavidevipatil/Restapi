@@ -9,6 +9,7 @@ Reparse- In Flask, particularly when using the Flask-RESTful extension, RequestP
 @GrahQL - GraphQL is a query language for APIs and a runtime for executing those queries by using a type system you define for your data. It was developed by Facebook in 2012 and released as an open-source project in 2015. GraphQL provides a more efficient, flexible, and powerful alternative to RESTful APIs.
 
 Our project will use the following libraries:
+
 Flask — this is the web server that we’ll use
 Flask-SQLAlchemy — an ORM that makes it easier for us to communicate with our SQL database
 Ariadne — a library for GraphQL python integration
@@ -24,3 +25,8 @@ Subscription: Realtime data with web sockets.
 To test api for the graphql use the link below
 http://localhost:5000/graphql
 
+Env installed env1
+greeting for the names provided in the simple query in schema.graphql
+query {
+  hello(name: "Alice")
+}
