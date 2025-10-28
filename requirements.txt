@@ -1,0 +1,17 @@
+# --- Core Flask packages ---
+Flask-Cors==4.0.1
+Flask-SQLAlchemy==3.1.1
+
+# --- GraphQL stack (Ariadne + compatible graphql-core) ---
+Flask==3.0.3
+ariadne==0.19.1
+graphql-core==3.2.3
+
+# --- Database driver for PostgreSQL ---
+psycopg2-binary==2.9.9  # -(PostgreSQL database adapter) ---
+Werkzeug==3.0.3  # --- Optional but useful for debugging and development ---
+itsdangerous==2.2.0
+Jinja2==3.1.4
+
+ipython==8.18.1   # -(Optional) For interactive Python shell and testing ---
+

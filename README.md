@@ -1,25 +1,26 @@
-https://www.youtube.com/watch?v=z3YMz-Gocmw&t=1683s # Restapi
-FLASK_API- Flask is a micro web framework written in Python. 
-It is classified as a microframework because it does not require particular tools or libraries
+# RESTful API with Flask and GraphQL
+This project demonstrates how to create a RESTful API using Flask and integrate GraphQL for more flexible data querying.
 
-orm - object relation mapper used to talk to the database of sql alchemy
 
-Rest api := Restful_api pakage updated  api installation 
-
-In Python, the marshal module is used for serializing and deserializing Python objects, but it's generally not recommended for general-purpose serialization due to its limitations and security concerns.
-
-The decorator marshal_with() is what actually takes your data object and applies the field filtering. The marshalling can work on single objects, dicts, or lists of objects. The @api. marshal_with decorator add the swagger documentation ability.
-
-Session' refers to the connection established between an application server and a database server to enable communication and data retrieval.
-
-In Python, when we talk about "database in session", we usually refer to using an ORM (Object-Relational Mapper) like SQLAlchemy to interact with a database within the context of a session.
-
-Here's what it means: Session:
-A session represents a logical unit of work with the database.It acts as a temporary workspace where you can perform operations like:
-Inserting new records
-Updating existing records
-Deleting records
-Querying the database
+## Technologies Used
 
 Reparse- In Flask, particularly when using the Flask-RESTful extension, RequestParser is a utility that helps to parse and validate incoming request data. It simplifies the process of handling input data from different sources such as query parameters, form data, and JSON payloads.
+
+@GrahQL - GraphQL is a query language for APIs and a runtime for executing those queries by using a type system you define for your data. It was developed by Facebook in 2012 and released as an open-source project in 2015. GraphQL provides a more efficient, flexible, and powerful alternative to RESTful APIs.
+
+Our project will use the following libraries:
+Flask — this is the web server that we’ll use
+Flask-SQLAlchemy — an ORM that makes it easier for us to communicate with our SQL database
+Ariadne — a library for GraphQL python integration
+Flask-Cors — an extension for Cross Origin Resource Sharing
+
+GraphQL 
+HTTP method used is POST always
+Query - to fetch data
+Mutation - to modify data (insert, update, delete)
+Subscription: Realtime data with web sockets.
+
+
+To test api for the graphql use the link below
+http://localhost:5000/graphql
 
